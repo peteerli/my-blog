@@ -1,0 +1,40 @@
+---
+import { site } from '../data/site';
+
+const path = Astro.url.pathname.replace(/\/$/, '') || '/';
+
+const links = [
+  { href: '/', label: '首页' },
+  { href: '/posts', label: '文章' },
+  { href: '/about', label: '关于' },
+  { href: '/links', label: '链接' },
+];
+
+function current(href: string): boolean {
+  if (href === '/') return path === '/';
+  return path === href || path.startsWith(`${href}/`);
+}
+---
+
+<header class="site-header">
+  <a class="brand" href="/">
+    <span class="seal" aria-hidden="true">龙</span>
+    <span class="brand-text">
+      <span class="brand-name">{site.name}</span>
+      <span class="brand-handle">{site.handle}</span>
+    </span>
+  </a>
+  <nav class="site-nav" aria-label="站内">
+    <ul>
+      {
+        links.map((link) => (
+          <li>
+            <a href={link.href} aria-current={current(link.href) ? 'page' : undefined}>
+              {link.label}
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+  </nav>
+</header>

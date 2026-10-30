@@ -1,0 +1,44 @@
+---
+import Base from '../layouts/Base.astro';
+import SocialList from '../components/SocialList.astro';
+import { site } from '../data/site';
+import { formatDate } from '../lib/format';
+import { getPosts } from '../lib/posts';
+
+const posts = await getPosts();
+---
+
+<Base title={site.title} description={site.description}>
+  <p class="eyebrow">个人创作笔记</p>
+  <h1>把 YouTube、TikTok 和 X 上的方法写下来。</h1>
+  <p class="lede">
+    我是龙傲天，网上也叫 peteerli。这里记下做内容时反复用到的做法：一条长视频只讲一件事，一条短片只留一个动作，一条帖子只下一个判断。
+  </p>
+
+  <section class="section" aria-labelledby="latest-heading">
+    <h2 id="latest-heading">最近的笔记</h2>
+    <ul class="stack">
+      {
+        posts.map((post) => (
+          <li>
+            <a class="card" href={`/posts/${post.id}`}>
+              <p class="meta">
+                <span class="pill">{post.data.platform}</span>
+                <time datetime={post.data.pubDate.toISOString()}>{formatDate(post.data.pubDate)}</time>
+              </p>
+              <h3>{post.data.title}</h3>
+              <p>{post.data.description}</p>
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+  </section>
+
+  <section class="section" aria-labelledby="social-heading">
+    <h2 id="social-heading">社交主页</h2>
+    <p class="lede">下面的地址都是占位，标了 TODO。真实主页确定后再替换。</p>
+    <SocialList />
+    <p><a href="/links">查看链接说明</a></p>
+  </section>
+</Base>

@@ -1,0 +1,6 @@
+# Cloudflare Pages configuration for this static site.
+# There are no Pages Functions. GitHub Actions uploads ./dist directly.
+# https://developers.cloudflare.com/pages/functions/wrangler-configuration/
+name = "my-blog"
+pages_build_output_dir = "./dist"
+compatibility_date = "2026-10-30"

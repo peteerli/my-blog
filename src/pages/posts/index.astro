@@ -1,0 +1,30 @@
+---
+import Base from '../../layouts/Base.astro';
+import { formatDate } from '../../lib/format';
+import { getPosts } from '../../lib/posts';
+
+const posts = await getPosts();
+const description = '关于 YouTube、TikTok 与 X 内容创作的笔记。';
+---
+
+<Base title="文章" description={description}>
+  <p class="eyebrow">文章</p>
+  <h1>创作笔记</h1>
+  <p class="lede">三篇示例，分别对应 YouTube 长视频、TikTok 短视频，以及在 X 上写作。</p>
+  <ul class="stack">
+    {
+      posts.map((post) => (
+        <li>
+          <a class="card" href={`/posts/${post.id}`}>
+            <p class="meta">
+              <span class="pill">{post.data.platform}</span>
+              <time datetime={post.data.pubDate.toISOString()}>{formatDate(post.data.pubDate)}</time>
+            </p>
+            <h3>{post.data.title}</h3>
+            <p>{post.data.description}</p>
+          </a>
+        </li>
+      ))
+    }
+  </ul>
+</Base>

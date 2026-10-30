@@ -1,0 +1,10 @@
+---
+import { site } from '../data/site';
+
+const year = new Date().getFullYear();
+---
+
+<footer class="site-footer">
+  <p>© {year} {site.name} · {site.handle}</p>
+  <p>静态页面，默认不接入访问统计。</p>
+</footer>
