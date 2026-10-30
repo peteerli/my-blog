@@ -15,10 +15,10 @@ const { linked = true } = Astro.props;
         <article class="card social-card">
           <p class="meta">
             <span class="pill">{item.label}</span>
-            <span class="todo-badge">TODO</span>
+            {item.todo && <span class="todo-badge">TODO</span>}
           </p>
           <h3>{item.handle}</h3>
-          <p>{item.todo}</p>
+          {item.todo && <p>{item.todo}</p>}
           {
             linked ? (
               <a class="url" href={item.href} rel="noopener noreferrer">
