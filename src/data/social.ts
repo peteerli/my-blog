@@ -3,18 +3,17 @@ export type SocialLink = {
   label: string;
   href: string;
   handle: string;
-  /** Shown on the page so placeholder URLs are obvious. */
-  todo: string;
+  /** Present only while the profile URL is still a placeholder. */
+  todo?: string;
 };
 
-// TODO: replace these placeholder profile URLs with the real handles.
+// TikTok and X are still placeholders. Replace those URLs when the real handles are known.
 export const socialLinks: SocialLink[] = [
   {
     platform: 'YouTube',
     label: 'YouTube',
-    href: 'https://www.youtube.com/@TODO-peteerli',
-    handle: '@TODO-peteerli',
-    todo: 'TODO: 替换为龙傲天 / peteerli 的真实 YouTube 频道地址',
+    href: 'https://www.youtube.com/@吴宗臻',
+    handle: '@吴宗臻',
   },
   {
     platform: 'TikTok',

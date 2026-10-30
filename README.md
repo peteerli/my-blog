@@ -2,7 +2,7 @@
 
 龙傲天 / peteerli 的个人博客。内容围绕 YouTube、TikTok 和 X 上的创作方法。站点用 [Astro](https://astro.build/) 在构建时生成静态 HTML，适合 Cloudflare Pages 免费方案。页面默认不加载统计脚本。
 
-社交主页地址还是占位，页面上标了 **TODO**，定义在 `src/data/social.ts`。
+YouTube 频道是 <https://www.youtube.com/@吴宗臻>。TikTok 和 X 仍是占位，页面上标了 **TODO**，定义在 `src/data/social.ts`。
 
 ## 本地预览
 
