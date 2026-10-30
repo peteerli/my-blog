@@ -7,7 +7,7 @@ export type SocialLink = {
   todo?: string;
 };
 
-// TikTok and X are still placeholders. Replace those URLs when the real handles are known.
+// TikTok is still a placeholder. Replace that URL when the real handle is known.
 export const socialLinks: SocialLink[] = [
   {
     platform: 'YouTube',
@@ -24,9 +24,8 @@ export const socialLinks: SocialLink[] = [
   },
   {
     platform: 'X',
-    label: 'X',
-    href: 'https://x.com/TODO-peteerli',
-    handle: '@TODO-peteerli',
-    todo: 'TODO: 替换为真实 X（Twitter）主页地址',
+    label: 'X（Twitter）',
+    href: 'https://x.com/Zong32078Wuw3',
+    handle: '@Zong32078Wuw3',
   },
 ];
