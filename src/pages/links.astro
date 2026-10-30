@@ -1,0 +1,20 @@
+---
+import Base from '../layouts/Base.astro';
+import SocialList from '../components/SocialList.astro';
+
+const description = 'YouTube、TikTok 与 X 的占位链接。真实主页尚未填入，均标为 TODO。';
+---
+
+<Base title="链接" description={description}>
+  <p class="eyebrow">链接</p>
+  <h1>社交主页还是占位。</h1>
+  <div class="prose">
+    <p>
+      龙傲天 / peteerli 的真实主页地址还没有写进仓库。下面每条都标了 <strong>TODO</strong>，网址里也带有 <code>TODO-peteerli</code>，避免被看成已经生效的账号。
+    </p>
+    <p>替换时只改 <code>src/data/social.ts</code> 里的 <code>href</code> 和 <code>handle</code>，首页和本页会一起更新。</p>
+  </div>
+  <div class="section">
+    <SocialList />
+  </div>
+</Base>

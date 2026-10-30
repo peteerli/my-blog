@@ -1,0 +1,35 @@
+---
+import { socialLinks } from '../data/social';
+
+interface Props {
+  linked?: boolean;
+}
+
+const { linked = true } = Astro.props;
+---
+
+<ul class="stack">
+  {
+    socialLinks.map((item) => (
+      <li>
+        <article class="card social-card">
+          <p class="meta">
+            <span class="pill">{item.label}</span>
+            <span class="todo-badge">TODO</span>
+          </p>
+          <h3>{item.handle}</h3>
+          <p>{item.todo}</p>
+          {
+            linked ? (
+              <a class="url" href={item.href} rel="noopener noreferrer">
+                {item.href}
+              </a>
+            ) : (
+              <p class="url">{item.href}</p>
+            )
+          }
+        </article>
+      </li>
+    ))
+  }
+</ul>

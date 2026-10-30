@@ -1,0 +1,50 @@
+# Publish the static site to Cloudflare Pages on every push to main.
+#
+# cloudflare/pages-action@v1 is the action this repo was originally meant to
+# use. As of 2026-10-30 that repository returns 404 (the action was deprecated
+# and then removed). Cloudflare's current Direct Upload guide uses
+# cloudflare/wrangler-action to run `wrangler pages deploy` with the same
+# secrets and without a Cloudflare↔GitHub OAuth connection:
+# https://developers.cloudflare.com/pages/how-to/use-direct-upload-with-continuous-integration/
+name: Deploy to Cloudflare Pages
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+concurrency:
+  group: pages-my-blog
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    name: Build and deploy
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      deployments: write
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v6
+        with:
+          node-version: "22.23.4"
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build
+        run: npm run build
+
+      - name: Deploy to Cloudflare Pages
+        uses: cloudflare/wrangler-action@v4
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          command: pages deploy dist --project-name=my-blog --branch=main
+          gitHubToken: ${{ secrets.GITHUB_TOKEN }}

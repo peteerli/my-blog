@@ -1,0 +1,28 @@
+---
+import Base from '../layouts/Base.astro';
+import { site } from '../data/site';
+
+const description = '龙傲天（peteerli）是谁，以及这个静态博客记些什么。';
+---
+
+<Base title="关于" description={description}>
+  <p class="eyebrow">关于</p>
+  <h1>龙傲天，也叫 peteerli。</h1>
+  <div class="prose">
+    <p>
+      我在 YouTube、TikTok 和 X 上做内容。这个站不是作品全集，而是一本公开的方法笔记：什么值得拍成长视频，什么只适合留一个动作，什么判断适合写成一条可以转发的帖子。
+    </p>
+    <p>
+      三个平台各做一件事。YouTube 把一个题目讲完，TikTok 让人在划走之前看懂一次，X 把判断写成短句，用来决定它值不值得做成视频。笔记之间会互相提到，但不会把同一段文案贴三遍。
+    </p>
+    <p>
+      社交主页的链接还是占位，页面上标了 TODO。真实地址确定后，改 <code>src/data/social.ts</code> 再发布即可。在那之前，点进去不会到达我的账号。
+    </p>
+    <p>
+      站点用 Astro 在构建时生成静态 HTML，放到 Cloudflare Pages 的免费方案上。页面不加载统计脚本，也不嵌入第三方追踪。若以后要看访问量，可以再单独接 Cloudflare Web Analytics，默认是关的。
+    </p>
+    <p>
+      想看文章从 <a href="/posts">文章列表</a> 开始，想换链接去 <a href="/links">链接页</a>。
+    </p>
+  </div>
+</Base>
